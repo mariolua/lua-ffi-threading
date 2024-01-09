@@ -1,4 +1,3 @@
--- Import ffi library to use C data types and call functions in shared libraries
 local ffi = require("ffi")
 
 local string_match, string_len, string_gsub, string_gmatch, string_byte = string.match, string.len, string.gsub, string.gmatch, string.byte
