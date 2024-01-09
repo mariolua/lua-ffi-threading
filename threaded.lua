@@ -1,16 +1,10 @@
 -- Import ffi library to use C data types and call functions in shared libraries
 local ffi = require("ffi")
 
--- Local references to frequently used string functions to optimize performance
 local string_match, string_len, string_gsub, string_gmatch, string_byte = string.match, string.len, string.gsub, string.gmatch, string.byte
-
--- Local references to ffi functions to cast data types and get string representations
 local cast, typeof, ffi_string = ffi.cast, ffi.typeof, ffi.string
 
--- Get the address of GetModuleHandle function in engine.dll or throw an error if not found
 local pGetModuleHandle_sig = client.find_signature("engine.dll", "\xFF\x15\xCC\xCC\xCC\xCC\x85\xC0\x74\x0B") or error("pGetModuleHandle_sig not found")
-
--- Get the address of GetProcAddress function in engine.dll or throw an error if not found
 local pGetProcAddress_sig = client.find_signature("engine.dll", "\xFF\x15\xCC\xCC\xCC\xCC\xA3\xCC\xCC\xCC\xCC\xEB\x05") or error("pGetProcAddress_sig not found")
 
 -- Find the jmp ecx instruction in engine.dll or throw an error if not found
